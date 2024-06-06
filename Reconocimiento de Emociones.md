@@ -1,8 +1,11 @@
-# Actividad 1: Reconocimiento de rostro.
-En el reconocimiento de rostro se deben de tomar varias fotos de una misma persona completamente enfocada en el rostro no puede aparecer otra cosa, se puede hacer de varias personas, pero en carpetas diferentes y ya una vez que ejecutas el programa si tomaste más de 1000 fotos de cada persona debería poder reconocer a la persona que detecta la cámara.
+# Actividad: Reconocimiento de rostro.
 
-# Actividad 2: Reconocimiento de emociones.
-Es parecido al reconocimiento facial, pero con la diferencia de que cada emoción debes de guardarla en una sola carpeta, es decir, debe de haber una carpeta para caras felices, tristes y sorprendidos, puede ser de cualquier persona siempre y cuando tengan la misma emoción, al ejecutar el programa si el usuario sonríe detectará que está feliz, si el usuario abre más la boca y los ojos detectará que está sorprendido, y si el usuario no sonríe detectará que está triste.
+![Imagen](Emociones.jpg)
+
+En el reconocimiento de rostro se deben de tomar varias fotos de una misma persona completamente enfocada en el rostro no puede aparecer otra cosa, se puede hacer de varias personas, pero en carpetas diferentes y ya una vez que ejecutas el programa si tomas muchas fotos tienes más probabilidades de que te reconozca casi perfectamente.
+
+# Actividad: Reconocimiento de emociones.
+Es parecido al reconocimiento facial, pero con la diferencia de que cada emoción debe guardarse en una sola carpeta, es decir, debe de haber una carpeta para caras felices, otra para caras tristes y otra para caras sorprendidas, puede ser de cualquier persona siempre y cuando tengan la misma emoción, al ejecutar el programa si el usuario sonríe detectará que está feliz, si el usuario abre más la boca y los ojos detectará que está sorprendido, y si el usuario no sonríe detectará que está triste.
 
 ## Explicación del código para generar varias fotografías de un rostro
 
@@ -16,7 +19,7 @@ import cv2 as cv
 rostro = cv.CascadeClassifier('haarcascade_frontalface_alt.xml')
 ~~~
 
-Luego ya utilizamos la función “VideoCapture” para que haga uso de la cámara de la computadora y con la variable i será para contar las fotos que se van a tomar, se inicia un ciclo hilo donde se van a estar guardando las fotos en la ruta especificada y se redimensionaran a 100x100 para que funcione el reconocimiento facial, el hilo y el programa se detendrá hasta que se apriete la tecla ESC que en código ASCII corresponde al número 27:
+Luego ya utilizamos la función “VideoCapture” para que haga uso de la cámara de la computadora y con la variable "i" será para contar las fotos que se van a tomar, se inicia un ciclo hilo donde se van a estar guardando las fotos en la ruta especificada y se redimensionaran a 100x100 para que funcione el reconocimiento facial, el hilo y el programa se detendrá hasta que se apriete la tecla ESC que en código ASCII corresponde al número 27:
 
 ~~~
 cap = cv.VideoCapture(0)
@@ -67,8 +70,9 @@ faceRecognizer.train(facesData, np.array(labels))
 faceRecognizer.write('martinEigenface.xml')
 ~~~
 
-El siguiente código es un programa que con el archivo XML que se generó con el código anterior, enciende la cámara para ver que personas u objetos puede reconocer, al reconocer algo lo encerrara en un rectángulo verde y le pondrá la etiqueta de lo que corresponde ese objeto, mostrando que si lo reconoce en caso contrario dirá que es desconocido y el rectángulo cera rojo, que en algunos casos por falta de fotos y demás rostros llega a confundir a otras personas poniéndoles la etiqueta que no les corresponde.
+El siguiente código es un programa que con el archivo XML que se generó con el código anterior, enciende la cámara para ver que personas y emociones puede reconocer, al reconocer algo lo encerrara en un rectángulo verde y le pondrá la etiqueta de lo que corresponde ese objeto, mostrando que si lo reconoce en caso contrario dirá que es desconocido y el rectángulo será rojo, que en algunos casos por falta de fotos y demás rostros llega a confundir a otras personas poniéndoles la etiqueta que no les corresponde.
 
+Pero en el caso de las emociones solo reconocerá las expresiones que hará la persona que está enfrente de la cámara, no de quién se trata.
 ~~~
 import cv2 as cv
 import os 
